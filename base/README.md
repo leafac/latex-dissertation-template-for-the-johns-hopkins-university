@@ -18,6 +18,8 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 
 ## PDF/A
 
+https://www.pdf-online.com/osa/validate.aspx
+
 # Bibliography Entries ([`dissertation.bib`](dissertation.bib))
 
 ```bib
@@ -49,4 +51,4 @@ See [§ PDF/A](#pdf-a). For more options, refer to the documentation of the [`pd
 $pdf_mode = 1;
 ```
 
-Configure `latexmk` to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, as opposed to producing a DVI using the `latex` executable.
+Configure [`latexmk`](https://ctan.org/pkg/latexmk) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, as opposed to producing a DVI using the `latex` executable.
