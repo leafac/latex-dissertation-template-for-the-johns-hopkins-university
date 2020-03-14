@@ -54,7 +54,13 @@ This is just an example of a bibliography entry. For more on managing a bibliogr
 \Subject{!!TODO!!}
 ```
 
-See [§ PDF/A](#pdfa). For more options, refer to the documentation of the [`pdfx` package](https://ctan.org/pkg/pdfx).
+See discussion on PDF/A in the section about `dissertation.tex` above.
+
+In this file we configure the metadata associated with the PDF. In macOS, using Preview, you can see this metadata by going to **Tools > Show Inspector**:
+
+<img alt="Metadata in Preview" src="docs/metadata.png" width="366" />
+
+For more information, including other fields you may configure in this file, refer to the documentation for the [`pdfx` package](https://ctan.org/pkg/pdfx).
 
 </details>
 
