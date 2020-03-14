@@ -28,7 +28,7 @@ https://www.pdf-online.com/osa/validate.aspx
 </details>
 
 <details>
-<summary><strong><code>dissertation.bib</code>: Bibliography Entries</strong></summary>
+<summary><code>dissertation.bib</code>: Bibliography Entries</summary>
 
 ```bib
 @misc{template,
@@ -44,7 +44,7 @@ This is just an example of a bibliography entry. For more on managing a bibliogr
 </details>
 
 <details>
-<summary><strong><code>dissertation.xmpdata</code>: PDF/A Metadata</strong></summary>
+<summary><code>dissertation.xmpdata</code>: PDF/A Metadata</summary>
 
 ```latex
 \Title{!!TODO!!}
@@ -59,7 +59,7 @@ See [§ PDF/A](#pdf-a). For more options, refer to the documentation of the [`pd
 </details>
 
 <details>
-<summary><strong><code>.latexmkrc</code>: <code>latexmk</code> Configuration</strong></summary>
+<summary><code>.latexmkrc</code>: <code>latexmk</code> Configuration</summary>
 
 ```perl
 $pdf_mode = 1;
