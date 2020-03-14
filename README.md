@@ -2,7 +2,7 @@
 
 [**Source**](https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university)
 
-This is a minimal LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) given by the Johns Hopkins University Library.
+This is a LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) given by the Johns Hopkins University Library.
 
 **Disclaimer:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
@@ -10,7 +10,7 @@ This is a minimal LaTeX template that conforms to the [Formatting Requirements](
 
 Run [`latexmk`](https://ctan.org/pkg/latexmk):
 
-```console
+```
 $ latexmk
 ```
 
@@ -54,14 +54,14 @@ This is just an example of a bibliography entry. For more on managing a bibliogr
 \Subject{!!TODO!!}
 ```
 
-See [§ PDF/A](#pdf-a). For more options, refer to the documentation of the [`pdfx` package](https://ctan.org/pkg/pdfx).
+See [§ PDF/A](#pdfa). For more options, refer to the documentation of the [`pdfx` package](https://ctan.org/pkg/pdfx).
 
 </details>
 
 <details>
 <summary><code>.latexmkrc</code>: <code>latexmk</code> Configuration</summary>
 
-```perl
+```
 $pdf_mode = 1;
 ```
 
@@ -75,4 +75,4 @@ TODO
 
 ## Related Work
 
-The [Johns Hopkins University Library](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) mentions [a template by John “Randy” Clayton](https://github.com/jrclayton/jhu-dissertation-mwe). There’s a whole lineage of templates of that sort. What makes this template different is that it’s very small and comes with line-by-line explanations.
+The [Johns Hopkins University Library](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) mentions [this other LaTeX template](https://github.com/jrclayton/jhu-dissertation-mwe). What makes our template different is that it’s small and comes with [line-by-line explanations](#contents).
