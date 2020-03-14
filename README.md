@@ -58,9 +58,7 @@ See discussion on PDF/A in the section about `dissertation.tex` above.
 
 In this file we configure the metadata associated with the PDF. In macOS, using Preview, you can see this metadata by going to **Tools > Show Inspector**:
 
-<figure align="center">
-<img alt="Metadata in Preview" src="docs/metadata.png" width="366" />
-</figure>
+<p align="center"><img alt="Metadata in Preview" src="docs/metadata.png" width="366" /></p>
 
 For more information, including other fields you may configure in this file, refer to the documentation for the [`pdfx` package](https://ctan.org/pkg/pdfx).
 
