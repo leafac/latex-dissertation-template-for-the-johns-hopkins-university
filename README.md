@@ -4,7 +4,7 @@
 
 This is a minimal LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) given by the Johns Hopkins University Library.
 
-**Disclaimer:** The template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
+**Disclaimer:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
 ## Compiling
 
@@ -19,7 +19,7 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 ## Contents
 
 <details>
-<summary><strong>LaTeX Source (<a href="dissertation.tex"><code>dissertation.tex</code></a>)</strong></summary>
+<summary><strong><code>dissertation.tex</code>: LaTeX Source</strong></summary>
 
 ### PDF/A
 
@@ -27,7 +27,8 @@ https://www.pdf-online.com/osa/validate.aspx
 
 </details>
 
-## Bibliography Entries ([`dissertation.bib`](dissertation.bib))
+<details>
+<summary><strong><code>dissertation.bib</code>: Bibliography Entries</strong></summary>
 
 ```bib
 @misc{template,
@@ -40,7 +41,10 @@ https://www.pdf-online.com/osa/validate.aspx
 
 This is just an example of a bibliography entry. For more on managing a bibliography, refer to the [BibTeX](https://ctan.org/pkg/bibtex) documentation. Or use a citation manager such as [Zotero](https://www.zotero.org) or [BibDesk](https://bibdesk.sourceforge.io), which produce a `.bib` file.
 
-## PDF/A Metadata ([`dissertation.xmpdata`](dissertation.xmpdata))
+</details>
+
+<details>
+<summary><strong><code>dissertation.xmpdata</code>: PDF/A Metadata</strong></summary>
 
 ```latex
 \Title{!!TODO!!}
@@ -52,13 +56,22 @@ This is just an example of a bibliography entry. For more on managing a bibliogr
 
 See [§ PDF/A](#pdf-a). For more options, refer to the documentation of the [`pdfx` package](https://ctan.org/pkg/pdfx).
 
-## `latexmk` Configuration ([`.latexmkrc`](.latexmkrc))
+</details>
 
-```
+<details>
+<summary><strong><code>.latexmkrc</code>: <code>latexmk</code> Configuration</strong></summary>
+
+```perl
 $pdf_mode = 1;
 ```
 
 Configure [`latexmk`](https://ctan.org/pkg/latexmk) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, as opposed to producing a DVI using the `latex` executable.
+
+</details>
+
+## Beyond
+
+TODO
 
 ## Related Work
 
