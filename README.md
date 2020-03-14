@@ -19,11 +19,7 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 ## Contents
 
 <details>
-<summary>
-
-LaTeX Source ([`dissertation.tex`](dissertation.tex))
-
-</summary>
+<summary><strong>LaTeX Source (<a href="dissertation.tex"><code>dissertation.tex</code></a>)</strong></summary>
 
 ### PDF/A
 
