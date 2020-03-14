@@ -21,7 +21,15 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 <details>
 <summary><code>dissertation.tex</code>: Main Document</summary>
 
-### PDF/A
+```latex
+\documentclass[12pt, oneside]{book}
+```
+
+The `book` document class conforms to most of the formatting requirements and is one of the default document classes included in LaTeX.
+
+The `12pt` option increases the font size of body text from the default `10pt`. This is optional, since the formatting guidelines would allow for `10pt`, but it has the effect of reducing line length which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
+
+The `oneside` option makes the margins the same in all pages, instead of the default behavior which is to account for binding and make the bigger margin alternate from left on odd pages to right on even pages.
 
 https://www.pdf-online.com/osa/validate.aspx
 
