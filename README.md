@@ -100,7 +100,7 @@ This is the beginning of the title page, which must be centered and use single s
 \vspace*{0.5in}
 ```
 
-There must be a space of 1.5″ before the title, which we accomplish with the 1″ margin plus 0.5″ of vertical space.
+There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a vertical space of 0.5″. We must use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
 
 </details>
 
