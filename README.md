@@ -35,9 +35,21 @@ The `oneside` option makes the margins the same in all pages, instead of the def
 \usepackage[a-1b]{pdfx}
 ```
 
-The [`pdfx` package](https://ctan.org/pkg/pdfx) makes LaTeX produce the specific kind of PDF that the library requires: PDF/A. A PDF/A is a special kind of PDF meant for **a**rchival.
+Including the [`pdfx` package](https://ctan.org/pkg/pdfx) with the `a-1b` option tells LaTeX to produce the specific kind of PDF that the library requires: PDF/A. A PDF/A is a special kind of PDF meant for **a**rchival, which means that: 1. It includes metadata for indexing, which you must specify in a file called `dissertation.xmpdata` (see below); 2. It includes all the data necessary to reproduce the document well into the future, for example, it must embed the fonts used in the document; and 3. It must not contain interactive content such as video, audio, JavaScript, and so forth.
 
-https://www.pdf-online.com/osa/validate.aspx
+For technical reasons, the `pdfx` package can’t guarantee that the produced PDF complies to the PDF/A standard, so you must validate the document yourself. The golden standard for this validation is [Adobe Acrobat Pro DC](https://acrobat.adobe.com/us/en/acrobat/acrobat-pro.html), which includes a tool called **Preflight** capable of detecting problems and fixing them. But Adobe Acrobat Pro DC is a paid, so you may prefer to use an [online validator](https://www.pdf-online.com/osa/validate.aspx) instead. Beware that these alternative tools may not be completely accurate. (As far as I can tell, the library uses Adobe Acrobat Pro DC.)
+
+```latex
+\hypersetup{hidelinks, bookmarksnumbered}
+```
+
+Configuration for the [`hyperref` package](https://ctan.org/pkg/hyperref), which is included by `pdfx` (see above).
+
+The `hidelinks` option tells `hyperref` **not** to decorate links with colored boxes:
+
+| Without `hidelinks`                                                          | With `hidelinks`                                                       |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| <img alt="Without hidelinks" src="docs/hidelinks-without.png" width="793" /> | <img alt="With hidelinks" src="docs/hidelinks-with.png" width="825" /> |
 
 </details>
 
