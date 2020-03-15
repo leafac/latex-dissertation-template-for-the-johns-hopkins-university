@@ -25,11 +25,17 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 \documentclass[12pt, oneside]{book}
 ```
 
-The `book` document class conforms to most of the formatting requirements and is one of the default document classes included in LaTeX.
+The `book` document class conforms to most of the formatting requirements and is one of the default document classes included with LaTeX.
 
 The `12pt` option increases the font size of body text from the default `10pt`. This is optional, since the formatting guidelines would allow for `10pt`, but it has the effect of reducing line length which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
-The `oneside` option makes the margins the same in all pages, instead of the default behavior which is to account for binding and make the bigger margin alternate from left on odd pages to right on even pages.
+The `oneside` option makes the margins the same in all pages, instead of the default behavior which is to account for binding and make the wider margin alternate from left on odd pages to right on even pages.
+
+```latex
+\usepackage[a-1b]{pdfx}
+```
+
+The [`pdfx` package](https://ctan.org/pkg/pdfx) makes LaTeX produce the specific kind of PDF that the library requires: PDF/A. A PDF/A is a special kind of PDF meant for **a**rchival.
 
 https://www.pdf-online.com/osa/validate.aspx
 
@@ -47,7 +53,7 @@ https://www.pdf-online.com/osa/validate.aspx
 }
 ```
 
-In this file we include information about the citations. The existing content is just an example of an entry. For more on managing a bibliography, refer to the [BibTeX](https://ctan.org/pkg/bibtex) documentation. Or use a citation manager such as [Zotero](https://www.zotero.org) or [BibDesk](https://bibdesk.sourceforge.io), which produce a `.bib` file.
+The existing content is just an example of an entry. For more on managing a bibliography, refer to the [BibTeX](https://ctan.org/pkg/bibtex) documentation. Or use a citation manager such as [Zotero](https://www.zotero.org) or [BibDesk](https://bibdesk.sourceforge.io), which produce a `.bib` file.
 
 </details>
 
@@ -62,7 +68,7 @@ In this file we include information about the citations. The existing content is
 \Subject{!!TODO!!}
 ```
 
-In this file we configure the metadata associated with the PDF (see the discussion about PDF/A in the section about `dissertation.tex` above). You may inspect some of the metadata using Preview in macOS by going to **Tools > Show Inspector**:
+See the discussion about PDF/A in the section about `dissertation.tex` above. You may inspect some of the metadata using, for example, Preview in macOS by going to **Tools > Show Inspector**:
 
 <p align="center">
 <img alt="Metadata in Preview" src="docs/metadata.png" width="366" />
@@ -79,7 +85,7 @@ For more information, including other fields that you may configure in this file
 $pdf_mode = 1;
 ```
 
-Configure [`latexmk`](https://ctan.org/pkg/latexmk) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, instead of the default which is to produce a DVI using the `latex` executable.
+Configure [`latexmk`](https://ctan.org/pkg/latexmk) (see [§ Compiling](#compiling)) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, instead of the default which is to produce a DVI using the `latex` executable.
 
 </details>
 
