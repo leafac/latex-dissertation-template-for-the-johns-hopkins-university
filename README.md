@@ -53,14 +53,14 @@ Configuration for the [`hyperref` package](https://ctan.org/pkg/hyperref), which
 
 The `hidelinks` option tells `hyperref` to **not** to decorate links with colored boxes:
 
-| Without `hidelinks`                                                          | With `hidelinks`                                                       |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Without `hidelinks`                                                           | With `hidelinks`                                                        |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | <img alt="Without hidelinks" src="docs/hidelinks--without.png" width="793" /> | <img alt="With hidelinks" src="docs/hidelinks--with.png" width="825" /> |
 
 The `bookmarksnumbered` option tells `hyperref` to include the numbers of the sections on the table of contents displayed by PDF viewers:
 
-| Without `bookmarksnumbered`                                                                  | With `bookmarksnumbered`                                                               |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Without `bookmarksnumbered`                                                                   | With `bookmarksnumbered`                                                                |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | <img alt="Without bookmarksnumbered" src="docs/bookmarksnumbered--without.png" width="810" /> | <img alt="With bookmarksnumbered" src="docs/bookmarksnumbered--with.png" width="810" /> |
 
 ```latex
@@ -363,7 +363,7 @@ If you include source code in your dissertation, then it’s a good idea to synt
 
 As an external program to do syntax highlighting, install [Shiki LaTeX](https://www.npmjs.com/package/shiki-latex).
 
-**Note:** Traditionally the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results. 
+**Note:** Traditionally the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results.
 
 **Disclaimer:** [I](https://www.leafac.com) developed Shiki LaTeX.
 
