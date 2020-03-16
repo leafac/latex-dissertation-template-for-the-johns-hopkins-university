@@ -4,7 +4,7 @@
 
 A LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) of the Johns Hopkins University Library.
 
-**Disclaimer:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
+**Warning:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
 ## Compiling
 
@@ -53,13 +53,13 @@ The `hidelinks` option tells `hyperref` to **not** to decorate links with colore
 
 | Without `hidelinks`                                                          | With `hidelinks`                                                       |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <img alt="Without hidelinks" src="docs/hidelinks-without.png" width="793" /> | <img alt="With hidelinks" src="docs/hidelinks-with.png" width="825" /> |
+| <img alt="Without hidelinks" src="docs/hidelinks--without.png" width="793" /> | <img alt="With hidelinks" src="docs/hidelinks--with.png" width="825" /> |
 
 The `bookmarksnumbered` option tells `hyperref` to include the numbers of the sections on the table of contents displayed by PDF viewers:
 
 | Without `bookmarksnumbered`                                                                  | With `bookmarksnumbered`                                                               |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| <img alt="Without bookmarksnumbered" src="docs/bookmarksnumbered-without.png" width="810" /> | <img alt="With bookmarksnumbered" src="docs/bookmarksnumbered-with.png" width="810" /> |
+| <img alt="Without bookmarksnumbered" src="docs/bookmarksnumbered--without.png" width="810" /> | <img alt="With bookmarksnumbered" src="docs/bookmarksnumbered--with.png" width="810" /> |
 
 ```latex
 \usepackage{tocbibind}
@@ -289,9 +289,161 @@ Configure [`latexmk`](https://ctan.org/pkg/latexmk) (see [§ Compiling](#compil
 
 </details>
 
-## Beyond
+## Extras
 
-TODO
+<details>
+<summary>Pictures</summary>
+
+To include pictures in your document, use the [`graphicx` package](https://ctan.org/pkg/graphicx). Add the following before `\begin{document}` in `dissertation.tex`:
+
+```latex
+\usepackage{graphicx}
+```
+
+Then, anywhere in the document, use `\includegraphics{picture.pdf-or-png-or-jpg-and-so-forth}`.
+
+Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-latex-documents/) for more advice on how to draw pictures for LaTeX documents using Keynote on macOS.
+
+</details>
+
+<details>
+<summary>Other Fonts</summary>
+
+**Warning:** Other fonts may not include the metadata necessary to produce a valid PDF/A (see the discussion about PDF/A in the section on `dissertation.tex` above). Test the document produced with other fonts on a PDF/A validator.
+
+The default LaTeX fonts have been overused in academia. You may use other fonts that are already included in most LaTeX distributions by following the instructions from [The LaTeX Font Catalog](https://tug.org/FontCatalogue/).
+
+Alternatively, you may use the fonts installed on your operating system. These are the same fonts that appear in the font selection boxes in other software you use. There are two steps to accomplish this: first, you have to compile your document with the [`lualatex` executable](http://www.luatex.org) instead of `pdflatex`, and second you have to specify which fonts to use.
+
+To compile your document with the `lualatex` executable, which is already included in most LaTeX distributions, you just have to instruct `latexmk` to use it by adding the following to `.latexmkrc`:
+
+```
+$pdflatex = 'lualatex %O %S';
+```
+
+**Note:** If you’re also using a syntax highlighter (see below), then include the `-shell-escape` option as well.
+
+The `$pdflatex` variable specifies which command to run to produce a PDF. The `%O` stands for the compiler **o**ptions passed when invoking `latexmk` (for example, `-file-line-error`) and the `%S` stands for the **s**ource file (for example, `dissertation.tex`).
+
+**Note:** We could instead have changed `$pdf_mode = 1;` to `$pdf_mode = 4;`, but tools like [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) overwrite that option.
+
+**Note:** Like the `lualatex` executable, the `xelatex` executable also allows for using the fonts installed on your operating system, but it’s more difficult to configure with `pdfx` to generate a PDF/A.
+
+To specify which fonts to use, add the following before `\begin{document}` in `dissertation.tex`:
+
+```latex
+\usepackage{fontspec, unicode-math}
+\setmainfont{Charter}
+\setmonofont{Menlo}[Scale = MatchLowercase]
+\setmathfont{Asana Math}
+```
+
+The [`fontspec` package](https://ctan.org/pkg/fontspec) allows for selecting text fonts, and the [`unicode-math` package](https://ctan.org/pkg/unicode-math) allows for selecting mathematical fonts.
+
+In this example, the main font of the document is set to [Charter](https://practicaltypography.com/charter.html), which is installed by default on macOS. You may select another font, including fonts you installed, by using its name, which you may find in the font selector from any other application.
+
+In this example, the monospaced font is set to Menlo, which is also installed by default on macOS. Again, you may select another font by using its name.
+
+In this example, the mathematical font is Asana Math, which comes with the `unicode-math` package.
+
+**Note:** If you need to collaborate with other people who may not have the same fonts installed on their computers, then you have two options. First, you may use fonts compatible with the `lualatex` executable that come with most LaTeX distributions; they’re those marked with “[OTF or TTF available]” on [The LaTeX Font Catalog](https://tug.org/FontCatalogue/). Second, you may include the font files along with the LaTeX source files for your document. See the documentation for the [`fontspec` package](https://ctan.org/pkg/fontspec) for more details.
+
+</details>
+
+<details>
+<summary>Syntax Highlighting</summary>
+
+If you include source code in your dissertation, then it’s a good idea to syntax highlight it. To accomplish this, you must follow three steps: first, install an external program to do syntax highlighting; second, configure `latexmk` to allow the LaTeX compiler to call this external program; and third, include the [`minted` package](https://ctan.org/pkg/minted), which calls this external program from within LaTeX.
+
+Traditionally, the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results. Install [Shiki LaTeX](https://www.npmjs.com/package/shiki-latex) to use Shiki in LaTeX documents.
+
+**Disclaimer:** [I](https://www.leafac.com) developed Shiki LaTeX.
+
+To configure `latexmk` to allow the LaTeX compiler to call Shiki LaTeX, add the following to `.latexmkrc`:
+
+```
+$pdflatex = 'pdflatex -shell-escape %O %S';
+```
+
+**Note:** If you’re also using other fonts (see above), then replace `pdflatex` with `lualatex`.
+
+The `-shell-escape` option allows the LaTeX compiler to call external programs.
+
+**Warning:** You must trust the LaTeX source for the document you’re compiling with the `-shell-escape` option, because you’re granting it the privilege to run arbitrary commands on your machine.
+
+To include the `minted` package, add the following before `\begin{document}` in `dissertation.tex`:
+
+```latex
+\usepackage{minted}
+\renewcommand{\MintedPygmentize}{./node_modules/.bin/shiki-minted}
+\setminted{fontsize = \footnotesize, baselinestretch = 1.2}
+\setmintedinline{fontsize = \normalsize}
+```
+
+The `\renewcommand` line tells `minted` to use Shiki LaTeX instead of the default Pygments.
+
+The `\setminted` line tells `minted` to use a smaller font and a thighter line spacing on code listings.
+
+The `\setmintedinline` line tells `minted` to use the normal font size in inline code, as opposed to the smaller font size we set above for code listings.
+
+Finally, the following is an example of a code listing that is highlighted as [TypeScript](https://www.typescriptlang.org):
+
+```latex
+\begin{minted}{ts}
+export function evaluate(input: string): string {
+  return prettify(run(parse(input)));
+}
+\end{minted}
+```
+
+<p align="center">
+<img alt="Syntax higlighting: Listing" src="docs/syntax-highlighting--listing.png" width="473" />
+</p>
+
+And the following is an example of an inline code that is highlighted as JavaScript:
+
+```latex
+[...] arrays (for example, \mintinline{js}{["Leandro", 29]}), [...]
+```
+
+<p align="center">
+<img alt="Syntax higlighting: Inline" src="docs/syntax-highlighting--inline.png" width="391" />
+</p>
+
+See the documentation for the [`minted` package](https://ctan.org/pkg/minted) for more information.
+
+</details>
+
+<details>
+<summary>Frames</summary>
+
+Frames are useful to set apart material that demands extra attention, that should be easy to find while skimming, or that is an aside which may be skipped, for example:
+
+<p align="center">
+<img alt="Frame" src="docs/frame.png" width="788" />
+</p>
+
+To use frames in a document, include the [`mdframed` package](https://ctan.org/pkg/mdframed) by adding the following before `\begin{document}` in `dissertation.tex`:
+
+```latex
+\usepackage[framemethod = tikz, middlelinewidth = 1pt, roundcorner = 3pt]{mdframed}
+```
+
+The `framemethod` option tells `mdframed` to use the [`TikZ` package](https://www.ctan.org/pkg/pgf) to draw the frames, which is necessary for round corners.
+
+The `middlelinewidth` option specifies how thick are the frames.
+
+The `roundcorner` option specifies roudned corners for the frames.
+
+Finally, the following is an example of some framed material:
+
+```latex
+\begin{mdframed}[frametitle = {Technical Terms}]
+Yocto-JavaScript is a representation of something called the \emph{$\lambda$-calculus}~\cite[§~6]{understanding-computation}.
+\end{mdframed}
+```
+
+</details>
 
 ## Related Work
 
