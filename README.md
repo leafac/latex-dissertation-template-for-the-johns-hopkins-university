@@ -27,7 +27,7 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 
 The `book` document class by itself already conforms to most of the formatting requirements and it’s one of the default document classes included with LaTeX.
 
-The `12pt` option increases the font size of body text from the default `10pt`. This is optional, because the formatting requirements would allow for `10pt`, but combined with a wider margin (see below), a bigger font reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
+The `12pt` option increases the font size of the body text from the default `10pt`. This is optional, because the formatting requirements would allow for `10pt`, but combined with a wider margin (see below), a bigger font reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
 The `oneside` option has two effects. First, it prevents LaTeX from inserting blank pages so that every chapter starts on a right-facing page. Second, it makes the margins the same on all pages, instead of the default behavior which is to account for binding and make the wider margin alternate on left- and right-facing pages.
 
@@ -77,13 +77,13 @@ The [`geometry` package](https://ctan.org/pkg/geometry) sets the margins. The fo
 \pagestyle{plain}
 ```
 
-The `plain` page style puts the page numbers centered on the bottom margin, following the formatting requirements. It also removes unnecessary decorations, for example, headers with the name of the current chapter.
+The `plain` page style sets the page numbers centered on the bottom margin. It also removes unnecessary decorations, for example, headers with the name of the current chapter.
 
 ```latex
 \usepackage[doublespacing]{setspace}
 ```
 
-The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing` option sets double space between lines in the text body, following the formatting requirements.
+The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing` option sets double space between lines in the text body.
 
 ```latex
 \begin{document}
@@ -104,13 +104,13 @@ The `center` environment makes the contents of the title page centered within th
 
 The `singlespace` environment sets a single space between the lines of the title page. (The `singlespace` environment is provided by the `setspace` package we included above.)
 
-**Note:** We don’t use the LaTeX facilities for creating title pages because they don’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance, and the `titlepage` environment causes the title page to not count toward the page count.
+**Note:** We don’t use the LaTeX facilities for creating title pages because they don’t follow the formatting requirements: the `\maketitle` command doesn’t give enough control over the appearance, and the `titlepage` environment causes the title page to not count toward the page count.
 
 ```latex
 \vspace*{0.5in}
 ```
 
-There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a **v**ertical **space** of 0.5″. We must use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
+There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a **v**ertical **space** of 0.5″. We use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
 
 ```latex
 \textbf{\uppercase{!!TITLE!!}}
@@ -136,7 +136,7 @@ Baltimore, Maryland\\!!DATE, FOR EXAMPLE, “August 2020”!!
 
 The rest of the information that must appear on the title page, separated by vertical spaces.
 
-The `\\` causes a line break.
+The `\\` causes a line break. If the title is too long, use `\\` to ensure that the line break appears in a desirable position.
 
 ```latex
 \end{singlespace}
@@ -148,11 +148,11 @@ The `\\` causes a line break.
 
 The end of the title page.
 
-First we close the `singlespace` and the `center` environments.
+First, we close the `singlespace` and the `center` environments.
 
-Then we set the page style for the title page as `empty`, which hides the page number (though the page still counts toward the page count).
+Then, we set the page style for the title page as `empty`, which hides the page number (though the page still counts toward the page count).
 
-Finally we use `\clearpage` so that the following material starts on a new page. (This isn’t strictly necessary because the following material is a `\chapter{}`, which already starts on a new page, but it’s a good measure.)
+Finally, we use `\clearpage` so that the following material starts on a new page. (This isn’t strictly necessary because the following material is a `\chapter{}`, which already starts on a new page, but it’s a good measure to use `\clearpage` nonetheless.)
 
 ```latex
 \chapter{Abstract}
@@ -178,7 +178,7 @@ The rest of the front matter.
 \listoffigures
 ```
 
-The table of contents, tables, and figures.
+The table of contents, tables, and figures. Remove if you don’t have tables or figures in your dissertation.
 
 ```latex
 \mainmatter
@@ -206,13 +206,13 @@ The example citation refers to an entry on the `dissertation.bib` file (see belo
 !!OPTIONAL!!
 ```
 
-The beginning of the appendix, which changes the counter of the chapters from numbers (for example, 1, 2, 3, and so forth) to letters (for example, A, B, C, and so forth). Add chapters here.
+The beginning of the appendix, which changes the counter of the chapters from numbers (for example, 1, 2, 3, and so forth) to letters (for example, A, B, C, and so forth). Either add chapters here or remove the appendix altogether.
 
 ```latex
 \backmatter
 ```
 
-The beginning of the back matter, which makes the chapters unnumbered.
+The beginning of the back matter, which makes the chapters unnumbered again, as they were in the front matter.
 
 ```latex
 \bibliographystyle{plain}
