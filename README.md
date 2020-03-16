@@ -6,6 +6,8 @@ A LaTeX template that conforms to the [Formatting Requirements](https://www.libr
 
 **Warning:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
+**Note:** Other universities have similar formatting requirements, so you may be able to adapt parts of this template even if you study somewhere else. And in any case this template is a good example of how to keep things simple when using LaTeX.
+
 ## Compiling
 
 Run [`latexmk`](https://ctan.org/pkg/latexmk):
@@ -300,7 +302,11 @@ To include pictures in your document, use the [`graphicx` package](https://ctan.
 \usepackage{graphicx}
 ```
 
-Then, anywhere in the document, use `\includegraphics{picture.pdf-or-png-or-jpg-and-so-forth}`.
+Then, anywhere in the document, include a picture with the following
+
+```latex
+\includegraphics{picture.pdf-or-png-or-jpg-and-so-forth}
+```
 
 Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-latex-documents/) for more advice on how to draw pictures for LaTeX documents using Keynote on macOS.
 
