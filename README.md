@@ -2,7 +2,7 @@
 
 [**Source**](https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university)
 
-This is a LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) of the Johns Hopkins University Library.
+A LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) of the Johns Hopkins University Library.
 
 **Disclaimer:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
@@ -91,26 +91,26 @@ The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing`
 \frontmatter
 ```
 
-The body of the document begins, and we declare the start of the front matter. The front matter is different from the rest of the document in two ways. First, the chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered. And second, the page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
+The body of the document begins, and we declare the beginning of the front matter. The front matter is different from the rest of the document in two ways. First, the chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered. And second, the page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
 
 ```latex
 \begin{center}
 \begin{singlespace}
 ```
 
-This is the beginning of the title page.
+The beginning of the title page.
 
 The `center` environment makes the contents of the title page centered within the margins.
 
 The `singlespace` environment sets a single space between the lines of the title page. (The `singlespace` environment is provided by the `setspace` package we included above.)
 
-**Note:** We don’t use the LaTeX facilities for creating title pages because they don’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance. And the `titlepage` environment causes the title page to not count toward the page count.
+**Note:** We don’t use the LaTeX facilities for creating title pages because they don’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance, and the `titlepage` environment causes the title page to not count toward the page count.
 
 ```latex
 \vspace*{0.5in}
 ```
 
-There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a vertical space of 0.5″. We must use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
+There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a **v**ertical **space** of 0.5″. We must use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
 
 ```latex
 \textbf{\uppercase{!!TITLE!!}}
@@ -119,6 +119,125 @@ There must be a space of 1.5″ before the title, which we accomplish with a mar
 The `\textbf` command makes the title bold.
 
 The `\uppercase` command makes the title all capital letters.
+
+```latex
+\vspace*{1in}
+
+by\\!!AUTHOR!!
+
+\vspace*{1.5in}
+
+A dissertation submitted to Johns Hopkins University\\in conformity with the requirements for the degree of !!DEGREE, FOR EXAMPLE, “Doctor of Philosophy”!!
+
+\vspace*{0.5in}
+
+Baltimore, Maryland\\!!DATE, FOR EXAMPLE, “August 2020”!!
+```
+
+The rest of the information that must appear on the title page, separated by vertical spaces.
+
+The `\\` causes a line break.
+
+```latex
+\end{singlespace}
+\end{center}
+
+\thispagestyle{empty}
+\clearpage
+```
+
+The end of the title page.
+
+First we close the `singlespace` and the `center` environments.
+
+Then we set the page style for the title page as `empty`, which hides the page number (though the page still counts toward the page count).
+
+Finally we use `\clearpage` so that the following material starts on a new page. (This isn’t strictly necessary because the following material is a `\chapter{}`, which already starts on a new page, but it’s a good measure.)
+
+```latex
+\chapter{Abstract}
+
+!!TODO!!
+
+\paragraph{Primary Reader and Advisor:}
+
+!!TODO!!
+
+\paragraph{Readers:}
+
+!!TODO!!
+
+!!OPTIONAL EXTRA CHAPTERS, FOR EXAMPLE, “Acknowledgements” AND “Dedication”!!
+```
+
+The rest of the front matter.
+
+```latex
+\tableofcontents
+\listoftables
+\listoffigures
+```
+
+The table of contents, tables, and figures.
+
+```latex
+\mainmatter
+```
+
+The beginning of the main matter, which has two effects. First, the chapters are numbered. And second, the page count resets to 1 and uses Arabic numerals (for example, 1, 2, 3, and so forth) instead of Roman numerals (for example, i, ii, iii, and so forth).
+
+```latex
+\chapter{Introduction}
+
+!!TODO!!
+
+!!EXAMPLE CITATION: \cite{template}!!
+```
+
+This is where the body of the dissertation lives. Add chapters here with the rest of your material (that’s the hard part!).
+
+The example citation refers to an entry on the `dissertation.bib` file (see below).
+
+```latex
+\appendix
+
+\chapter{Example Appendix}
+
+!!OPTIONAL!!
+```
+
+The beginning of the appendix, which changes the counter of the chapters from numbers (for example, 1, 2, 3, and so forth) to letters (for example, A, B, C, and so forth). Add chapters here.
+
+```latex
+\backmatter
+```
+
+The beginning of the back matter, which makes the chapters unnumbered.
+
+```latex
+\bibliographystyle{plain}
+\bibliography{\jobname}
+```
+
+The bibliography.
+
+The `plain` style sets the citations as numbers, for example, `[29]`.
+
+The `\jobname` makes BibTeX look for the the bibliography in a file named `dissertation.bib`. If you change the name of this file from `dissertation.tex` to `something-else.tex`, then change the bibliography from `dissertation.bib` to `something-else.bib` as well.
+
+```latex
+\chapter{Biographical Statement}
+
+!!TODO!!
+```
+
+The biographical statement appears on the last page of the document.
+
+```latex
+\end{document}
+```
+
+The end of the document.
 
 </details>
 
