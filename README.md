@@ -16,7 +16,7 @@ Run [`latexmk`](https://ctan.org/pkg/latexmk):
 $ latexmk
 ```
 
-The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
+You may find the generated PDF at [`dissertation.pdf`](dissertation.pdf).
 
 ## Contents
 
@@ -31,7 +31,7 @@ The `book` document class by itself already conforms to most of the formatting r
 
 The `12pt` option increases the font size of the body text from the default `10pt`. This is optional, because the formatting requirements would allow for `10pt`, but combined with a wider margin (see below), a bigger font reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
-The `oneside` option has two effects. First, it prevents LaTeX from inserting blank pages so that every chapter starts on a right-facing page. Second, it makes the margins the same on all pages, instead of the default behavior which is to account for binding and make the wider margin alternate on left- and right-facing pages.
+The `oneside` option has two effects. First, it prevents LaTeX from inserting blank pages so that every chapter would start on a right-facing page. Second, it makes the margins the same on all pages, instead of the default behavior which is to account for binding and make the wider margin alternate on left- and right-facing pages.
 
 ```latex
 \usepackage[a-1b]{pdfx}
@@ -73,7 +73,7 @@ Including the [`tocbibind` package](https://ctan.org/pkg/tocbibind) causes the B
 \usepackage[top = 1in, right = 1in, bottom = 1in, left = 1.5in]{geometry}
 ```
 
-The [`geometry` package](https://ctan.org/pkg/geometry) sets the margins. The formatting requirements allow for a left of margin of either 1″ (which they recommend for documents that will be presented only on screen) or 1.5″ (which they recommend for documents that may be printed, where the extra space accounts for the binding). We use a left of margin of 1.5″ even if the document will be presented only on screen because, combined with a bigger font (see above), a wider margin reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
+The [`geometry` package](https://ctan.org/pkg/geometry) sets the margins. The formatting requirements allow for a left of margin of either 1″ (which they recommend for documents that are presented only on screen) or 1.5″ (which they recommend for documents that may be printed, where the extra space accounts for the binding). We use a left of margin of 1.5″ even if the document is presented only on screen because, combined with a bigger font (see above), a wider margin reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
 ```latex
 \pagestyle{plain}
@@ -93,7 +93,7 @@ The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing`
 \frontmatter
 ```
 
-The body of the document begins, and we declare the beginning of the front matter. The front matter is different from the rest of the document in two ways. First, the chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered. And second, the page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
+The body of the document and the front matter begin. The front matter is different from the rest of the document in two ways. First, the chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered. And second, the page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
 
 ```latex
 \begin{center}
@@ -154,7 +154,7 @@ First, we close the `singlespace` and the `center` environments.
 
 Then, we set the page style for the title page as `empty`, which hides the page number (though the page still counts toward the page count).
 
-Finally, we use `\clearpage` so that the following material starts on a new page. (This isn’t strictly necessary because the following material is a `\chapter{}`, which already starts on a new page, but it’s a good measure to use `\clearpage` nonetheless.)
+Finally, we use the `\clearpage` command so that the following material starts on a new page. (This isn’t strictly necessary because the following material is a `\chapter{}`, which already starts on a new page, but it’s a good measure to use the `\clearpage` command nonetheless.)
 
 ```latex
 \chapter{Abstract}
@@ -180,7 +180,7 @@ The rest of the front matter.
 \listoffigures
 ```
 
-The table of contents, tables, and figures. Remove if you don’t have tables or figures in your dissertation.
+The table of contents, and the lists of tables and figures. You may remove the lists if you don’t have tables or figures in your dissertation.
 
 ```latex
 \mainmatter
@@ -308,7 +308,7 @@ Then, anywhere in the document, include a picture with the following
 \includegraphics{picture.pdf-or-png-or-jpg-and-so-forth}
 ```
 
-Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-latex-documents/) for more advice on how to draw pictures for LaTeX documents using Keynote on macOS.
+Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-latex-documents/) for more advice on how to draw pictures for LaTeX documents using [Keynote](https://www.apple.com/keynote/) on macOS.
 
 </details>
 
@@ -319,9 +319,9 @@ Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-late
 
 The default LaTeX fonts have been overused in academia. You may use other fonts that are already included in most LaTeX distributions by following the instructions from [The LaTeX Font Catalog](https://tug.org/FontCatalogue/).
 
-Alternatively, you may use the fonts installed on your operating system. These are the same fonts that appear in the font selection boxes in other software you use. There are two steps to accomplish this: first, you have to compile your document with the [`lualatex` executable](http://www.luatex.org) instead of `pdflatex`, and second you have to specify which fonts to use.
+Alternatively, you may use the fonts installed on your operating system. These are the same fonts that appear in the font selector of other software you use: they are the fonts that come with the operating system and the fonts that you installed. There are two steps to accomplish this: first, you have to compile your document with the [`lualatex` executable](http://www.luatex.org) instead of `pdflatex`; and second, you have to specify which fonts to use.
 
-To compile your document with the `lualatex` executable, which is already included in most LaTeX distributions, you just have to instruct `latexmk` to use it by adding the following to `.latexmkrc`:
+To compile your document with the `lualatex` executable, which is already included in most LaTeX distributions, you just have to instruct `latexmk` to use `lualatex` by adding the following to `.latexmkrc`:
 
 ```
 $pdflatex = 'lualatex %O %S';
@@ -333,7 +333,7 @@ The `$pdflatex` variable specifies which command to run to produce a PDF. The `%
 
 **Note:** We could instead have changed `$pdf_mode = 1;` to `$pdf_mode = 4;`, but tools like [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) overwrite that option.
 
-**Note:** Like the `lualatex` executable, the `xelatex` executable also allows for using the fonts installed on your operating system, but it’s more difficult to configure with `pdfx` to generate a PDF/A.
+**Note:** Like the `lualatex` executable, the `xelatex` executable also allows for using the fonts installed on your operating system, but it’s more difficult to configure with the `pdfx` package to generate a PDF/A.
 
 To specify which fonts to use, add the following before `\begin{document}` in `dissertation.tex`:
 
@@ -346,13 +346,13 @@ To specify which fonts to use, add the following before `\begin{document}` in `d
 
 The [`fontspec` package](https://ctan.org/pkg/fontspec) allows for selecting text fonts, and the [`unicode-math` package](https://ctan.org/pkg/unicode-math) allows for selecting mathematical fonts.
 
-In this example, the main font of the document is set to [Charter](https://practicaltypography.com/charter.html), which is installed by default on macOS. You may select another font, including fonts you installed, by using its name, which you may find in the font selector from any other application.
+In this example, the main font of the document is set to [Charter](https://practicaltypography.com/charter.html), which is installed by default on macOS. You may select another font by using its name, which you may find in the font selector of other software you use.
 
 In this example, the monospaced font is set to Menlo, which is also installed by default on macOS. Again, you may select another font by using its name.
 
 In this example, the mathematical font is Asana Math, which comes with the `unicode-math` package.
 
-**Note:** If you need to collaborate with other people who may not have the same fonts installed on their computers, then you have two options. First, you may use fonts compatible with the `lualatex` executable that come with most LaTeX distributions; they’re those marked with “[OTF or TTF available]” on [The LaTeX Font Catalog](https://tug.org/FontCatalogue/). Second, you may include the font files along with the LaTeX source files for your document. See the documentation for the [`fontspec` package](https://ctan.org/pkg/fontspec) for more details.
+**Note:** If you need to collaborate with other people who may not have the same fonts installed on their computers, then you have two options. First, you may use fonts compatible with the `lualatex` executable that come with most LaTeX distributions; they’re marked with “[OTF or TTF available]” on [The LaTeX Font Catalog](https://tug.org/FontCatalogue/). Second, you may include the font files along with the LaTeX source files for your document. See the documentation for the [`fontspec` package](https://ctan.org/pkg/fontspec) for more details.
 
 </details>
 
@@ -361,7 +361,9 @@ In this example, the mathematical font is Asana Math, which comes with the `unic
 
 If you include source code in your dissertation, then it’s a good idea to syntax highlight it. To accomplish this, you must follow three steps: first, install an external program to do syntax highlighting; second, configure `latexmk` to allow the LaTeX compiler to call this external program; and third, include the [`minted` package](https://ctan.org/pkg/minted), which calls this external program from within LaTeX.
 
-Traditionally, the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results. Install [Shiki LaTeX](https://www.npmjs.com/package/shiki-latex) to use Shiki in LaTeX documents.
+As an external program to do syntax highlighting, install [Shiki LaTeX](https://www.npmjs.com/package/shiki-latex).
+
+**Note:** Traditionally the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results. 
 
 **Disclaimer:** [I](https://www.leafac.com) developed Shiki LaTeX.
 
@@ -388,7 +390,7 @@ To include the `minted` package, add the following before `\begin{document}` in 
 
 The `\renewcommand` line tells `minted` to use Shiki LaTeX instead of the default Pygments.
 
-The `\setminted` line tells `minted` to use a smaller font and a thighter line spacing on code listings.
+The `\setminted` line tells `minted` to use a smaller font and a smaller space between lines in code listings.
 
 The `\setmintedinline` line tells `minted` to use the normal font size in inline code, as opposed to the smaller font size we set above for code listings.
 
@@ -406,10 +408,10 @@ export function evaluate(input: string): string {
 <img alt="Syntax higlighting: Listing" src="docs/syntax-highlighting--listing.png" width="473" />
 </p>
 
-And the following is an example of an inline code that is highlighted as JavaScript:
+And the following is an example of inline code that is highlighted as JavaScript:
 
 ```latex
-[...] arrays (for example, \mintinline{js}{["Leandro", 29]}), [...]
+arrays (for example, \mintinline{js}{["Leandro", 29]}),
 ```
 
 <p align="center">
