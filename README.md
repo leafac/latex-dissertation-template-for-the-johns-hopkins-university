@@ -104,7 +104,7 @@ The `center` environment makes the contents of the title page centered within th
 
 The `singlespace` environment sets a single space between the lines of the title page. (The `singlespace` environment is provided by the `setspace` package we included above.)
 
-**Note:** We don’t use the LaTeX facilities for creating title pages because they wouldn’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance. The `titlepage` environment causes the title page to not count toward the page count.
+**Note:** We don’t use the LaTeX facilities for creating title pages because they don’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance. And the `titlepage` environment causes the title page to not count toward the page count.
 
 ```latex
 \vspace*{0.5in}
