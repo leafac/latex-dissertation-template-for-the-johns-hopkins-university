@@ -25,19 +25,23 @@ The generated PDF will be at [`dissertation.pdf`](dissertation.pdf).
 \documentclass[12pt, oneside]{book}
 ```
 
-The `book` document class conforms to most of the formatting requirements and is one of the default document classes included with LaTeX.
+The `book` document class by itself already conforms to most of the formatting requirements and it’s one of the default document classes included with LaTeX.
 
 The `12pt` option increases the font size of body text from the default `10pt`. This is optional, because the formatting guidelines would allow for `10pt`, but combined with a wider margin (see below), a bigger font reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
-The `oneside` option makes the margins the same in all pages, instead of the default behavior which is to account for binding and make the wider margin alternate from left on odd pages to right on even pages.
+The `oneside` option has two effects. First, it prevents LaTeX from inserting blank pages so that every chapter starts on a right-facing page. Second, it makes the margins the same on all pages, instead of the default behavior which is to account for binding and make the wider margin alternate on left- and right-facing pages.
 
 ```latex
 \usepackage[a-1b]{pdfx}
 ```
 
-Including the [`pdfx` package](https://ctan.org/pkg/pdfx) with the `a-1b` option tells LaTeX to produce the specific kind of PDF that the library requires: PDF/A. A PDF/A is a special kind of PDF meant for **a**rchival, which means that: 1. It includes metadata for indexing, which you must specify in a file called `dissertation.xmpdata` (see below); 2. It includes all the data necessary to reproduce the document well into the future, for example, it must embed the fonts used in the document; and 3. It must not contain interactive content such as video, audio, JavaScript, and so forth.
+Including the [`pdfx` package](https://ctan.org/pkg/pdfx) with the `a-1b` option tells LaTeX to produce the specific kind of PDF that the library requires: PDF/A. A PDF/A is a special kind of PDF meant for **a**rchival, which is different from a regular PDF in three ways. First, it includes metadata for indexing, which you must specify in a file called `dissertation.xmpdata` (see below). Second, it includes all the data necessary to reproduce the document well into the future, for example, it embeds the fonts used in the document. And third, it doesn’t contain interactive content such as video, audio, JavaScript, and so forth.
 
-For technical reasons, the `pdfx` package can’t guarantee that the produced PDF complies to the PDF/A standard, so you must validate the document yourself. The golden standard for this validation is [Adobe Acrobat Pro DC](https://acrobat.adobe.com/us/en/acrobat/acrobat-pro.html), which includes a tool called **Preflight** capable of detecting problems and fixing them. But Adobe Acrobat Pro DC is a paid, so you may prefer to use an [online validator](https://www.pdf-online.com/osa/validate.aspx) instead. Beware that these alternative tools may not be completely accurate. (As far as I can tell, the library uses Adobe Acrobat Pro DC.)
+For technical reasons, the `pdfx` package can’t guarantee that the produced PDF complies to the PDF/A standard, so you must validate the generated document yourself. The golden standard for this kind of validation is [Adobe Acrobat Pro DC](https://acrobat.adobe.com/us/en/acrobat/acrobat-pro.html), which includes a tool called **Preflight** capable of detecting problems and fixing them. But Adobe Acrobat Pro DC is paid, so you may prefer to use an [online validator](https://www.pdf-online.com/osa/validate.aspx) instead. Beware that these alternative tools may not be completely accurate.
+
+<p align="center">
+<img alt="PDF/A validation online" src="docs/pdfa-validation.png" width="832" />
+</p>
 
 ```latex
 \hypersetup{hidelinks, bookmarksnumbered}
@@ -67,19 +71,19 @@ Including the [`tocbibind` package](https://ctan.org/pkg/tocbibind) causes the B
 \usepackage[top = 1in, right = 1in, bottom = 1in, left = 1.5in]{geometry}
 ```
 
-The [`geometry` package](https://ctan.org/pkg/geometry) sets the margins. The formatting requirements allow for a left of margin of either 1″ (which they recommend for documents that will only be presented in digital format) or 1.5″ (which they recommend for documents that may be printed, where the extra space accounts for the binding). We use a left of margin of 1.5″ even if the document is only meant to be read on the screen, because combined with a bigger font (see above), a wider margin reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
+The [`geometry` package](https://ctan.org/pkg/geometry) sets the margins. The formatting requirements allow for a left of margin of either 1″ (which they recommend for documents that will be presented only on screen) or 1.5″ (which they recommend for documents that may be printed, where the extra space accounts for the binding). We use a left of margin of 1.5″ even if the document will be presented only on screen because, combined with a bigger font (see above), a wider margin reduces line length, which makes the document [more comfortable to read](https://practicaltypography.com/line-length.html).
 
 ```latex
 \pagestyle{plain}
 ```
 
-The `plain` page style puts the page numbers centered on the bottom margin, following the formatting requirements. It also remove unnecessary decorations, for example, headers with the name of the current chapter.
+The `plain` page style puts the page numbers centered on the bottom margin, following the formatting requirements. It also removes unnecessary decorations, for example, headers with the name of the current chapter.
 
 ```latex
 \usepackage[doublespacing]{setspace}
 ```
 
-The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing` sets double space between lines in the text body, following the formatting requirements.
+The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing` option sets double space between lines in the text body, following the formatting requirements.
 
 ```latex
 \begin{document}
@@ -87,20 +91,34 @@ The [`setspace` package](https://ctan.org/pkg/setspace) with the `doublespacing`
 \frontmatter
 ```
 
-The body of the document begins, and we declare the start of the front matter. The front matter is different from the rest of the document in two ways: 1. The chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered; and 2. Page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
+The body of the document begins, and we declare the start of the front matter. The front matter is different from the rest of the document in two ways. First, the chapters (for example, **Abstract**, **Acknowledgements**, and so forth) aren’t numbered. And second, the page numbers use Roman numerals (for example, i, ii, iii, and so forth) instead of Arabic numerals (for example, 1, 2, 3, and so forth).
 
 ```latex
 \begin{center}
 \begin{singlespace}
 ```
 
-This is the beginning of the title page, which must be centered and use single space between the lines (the `singlespace` environment is provided by the `setspace` package we included above).
+This is the beginning of the title page.
+
+The `center` environment makes the contents of the title page centered within the margins.
+
+The `singlespace` environment sets a single space between the lines of the title page. (The `singlespace` environment is provided by the `setspace` package we included above.)
+
+**Note:** We don’t use the LaTeX facilities for creating title pages because they wouldn’t follow the formatting requirements. The `\maketitle` command doesn’t give enough control over the appearance. The `titlepage` environment causes the title page to not count toward the page count.
 
 ```latex
 \vspace*{0.5in}
 ```
 
 There must be a space of 1.5″ before the title, which we accomplish with a margin of 1″ (see above) plus a vertical space of 0.5″. We must use `\vspace*` instead of `\vspace` to prevent LaTeX from collapsing the space with the margin.
+
+```latex
+\textbf{\uppercase{!!TITLE!!}}
+```
+
+The `\textbf` command makes the title bold.
+
+The `\uppercase` command makes the title all capital letters.
 
 </details>
 
