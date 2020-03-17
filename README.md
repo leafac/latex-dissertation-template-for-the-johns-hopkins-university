@@ -348,7 +348,7 @@ The [`fontspec` package](https://ctan.org/pkg/fontspec) allows for selecting tex
 
 In this example, the main font of the document is set to [Charter](https://practicaltypography.com/charter.html), which is installed by default on macOS. You may select another font by using its name, which you may find in the font selector of other software you use.
 
-In this example, the monospaced font is set to Menlo, which is also installed by default on macOS. Again, you may select another font by using its name.
+In this example, the monospaced font is set to Menlo, which is also installed by default on macOS. Again, you may select another font by using its name. The `Scale` option resizes the font so that it matches the size of the main font.
 
 In this example, the mathematical font is Asana Math, which comes with the `unicode-math` package.
 
