@@ -383,7 +383,7 @@ To include the `minted` package, add the following before `\begin{document}` in 
 
 ```latex
 \usepackage{minted}
-\renewcommand{\MintedPygmentize}{./node_modules/.bin/shiki-minted}
+\renewcommand{\MintedPygmentize}{node_modules/.bin/shiki-minted}
 \setminted{fontsize = \footnotesize, baselinestretch = 1.2}
 \setmintedinline{fontsize = \normalsize}
 ```
