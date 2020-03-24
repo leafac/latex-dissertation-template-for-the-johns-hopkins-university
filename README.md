@@ -1,8 +1,8 @@
-# [LaTeX](https://www.latex-project.org) Dissertation Template for the [Johns Hopkins University](https://www.jhu.edu)
-
-[**Source**](https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university)
-
-A LaTeX template that conforms to the [Formatting Requirements](https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/) of the Johns Hopkins University Library.
+<h1 align="center"><a href="https://www.latex-project.org">LaTeX</a> Dissertation Template for the <a href="https://www.jhu.edu">Johns Hopkins University</a></h1>
+<h3 align="center">A LaTeX template that conforms to the <a href="https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/">Formatting Requirements</a> of the Johns Hopkins University Library</h3>
+<p align="center">
+<a href="https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university"><img alt="Source" src="https://img.shields.io/badge/Source---" /></a>
+</p>
 
 **Warning:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
 
@@ -361,7 +361,7 @@ In this example, the mathematical font is Asana Math, which comes with the `unic
 
 If you include source code in your dissertation, then it’s a good idea to syntax highlight it. To accomplish this, you must follow three steps: first, install an external program to do syntax highlighting; second, configure `latexmk` to allow the LaTeX compiler to call this external program; and third, include the [`minted` package](https://ctan.org/pkg/minted), which calls this external program from within LaTeX.
 
-As an external program to do syntax highlighting, install [Shiki LaTeX](https://www.npmjs.com/package/shiki-latex).
+As an external program to do syntax highlighting, install [Shiki LaTeX](https://www.npmjs.com/package/latex-dissertation-template-for-the-johns-hopkins-university).
 
 **Note:** Traditionally the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results.
 
