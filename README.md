@@ -356,7 +356,7 @@ The following is an example of how to specify different fonts (this must appear 
 
 The [`fontspec` package](https://ctan.org/pkg/fontspec) allows for selecting text fonts, and the [`unicode-math` package](https://ctan.org/pkg/unicode-math) allows for selecting mathematical fonts.
 
-In this example, the main font of the document is set to [PT Serif](http://www.paratype.com/public/), the monospaced font is set to PT Mono, and the mathematical font is set to Asana Math. All of these fonts are included by default in most LaTeX distributions, and PT Serif and PT Mono are included in macOS as well.
+In this example, the main font of the document is set to [PT Serif](http://www.paratype.com/public/), the monospaced font is set to PT Mono, and the mathematical font is set to Asana Math. All of these fonts are included by default in most LaTeX distributions. PT Serif and PT Mono are included in macOS as well, which is useful, for example, to draw pictures in Keynote (see above), but they’re hidden in the font selectors; to select these fonts, go to **Format > Font > Show Fonts > (Collection) All Fonts > PT Serif**.
 
 Refer to the manuals of the packages mentioned above for more information, including how to select fonts that you have installed in your operating system.
 
