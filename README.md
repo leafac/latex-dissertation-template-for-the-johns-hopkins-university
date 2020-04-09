@@ -287,7 +287,7 @@ For more information, including other fields that you may configure in this file
 $pdf_mode = 1;
 ```
 
-Configure [`latexmk`](https://ctan.org/pkg/latexmk) (see [§ Compiling](#compiling)) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, instead of the default which is to produce a DVI using the `latex` executable.
+Configure [`latexmk`](https://ctan.org/pkg/latexmk) (see [§ Compiling](#compiling)) to produce a PDF using the [`pdflatex`](https://ctan.org/pkg/pdftex) executable, instead of the default which is to produce a DVI using the `latex` executable (see the `latexmk` manual for details on this magic number).
 
 </details>
 
@@ -317,11 +317,23 @@ Watch [this video](https://www.leafac.com/using-keynote-to-draw-figures-for-late
 
 **Warning:** Other fonts may not include the metadata necessary to produce a valid PDF/A (see the discussion about PDF/A in the section on `dissertation.tex` above). Test the document produced with other fonts on a PDF/A validator.
 
-The default LaTeX fonts have been overused in academia. You may use other fonts that are already included in most LaTeX distributions by following the instructions from [The LaTeX Font Catalog](https://tug.org/FontCatalogue/).
+If you don’t select a font for your document, then LaTeX uses default choices that, because they’re the default, have been overused. Fortunately, most LaTeX distributions include a good selection of fonts and you may even use the fonts installed on your operating system.
 
-Alternatively, you may use the fonts installed on your operating system. These are the same fonts that appear in the font selector of other software you use: they are the fonts that come with the operating system and the fonts that you installed. There are two steps to accomplish this: first, you have to compile your document with the [`lualatex` executable](http://www.luatex.org) instead of `pdflatex`; and second, you have to specify which fonts to use.
+If you are collaborating with other people who may have different fonts installed, then it’s a better idea to choose from the fonts that are included in most LaTeX distributions. Check the [The LaTeX Font Catalog](https://tug.org/FontCatalogue/) for a list of these fonts along with instructions on how to use them.
 
-To compile your document with the `lualatex` executable, which is already included in most LaTeX distributions, you just have to instruct `latexmk` to use `lualatex` by adding the following to `.latexmkrc`:
+When selecting different fonts, your first decision is which font format to use. There are two common formats and you must not mix between them in the same document. Some fonts are available only in one of these formats, so the format may affect your choice of fonts.
+
+The first format, which is the default, is an old format called PostScript Type 1. When The LaTeX Font Catalog doesn’t specify the format of a font, it’s in the PostScript Type 1 format.
+
+The second format is the more modern OTF/TTF format. Some fonts in The LaTeX Font Catalog support both the PostScript Type 1 format and the OTF/TTF format, while others support only one of them. Most of the fonts you have installed on your operating system are in the OTF/TTF format.
+
+The format of the fonts in your document affect how you compile it. To compile a document using fonts in the PostScript Type 1 format, use the `pdflatex` executable as usual. To compile a document using fonts in the OTF/TTF format, replace `pdflatex` with a different executable called [`lualatex`](http://www.luatex.org).
+
+**Note:** There’s yet another executable called `xelatex` that also handles fonts in the OTF/TTF format, but it’s more difficult to configure to generate a PDF/A.
+
+The decision between `pdflatex` and `lualatex` may also be dictated by other factors. For example, if you must include source code in your document, then it’s better to use `lualatex` because `pdflatex` may render characters such as `` ` `` incorrectly (see discussion about **Syntax Highlighting** below).
+
+The `lualatex` executable is already included in most LaTeX distributions, so to compile your document using it you just have to configure `latexmk` by adding the following to `.latexmkrc`:
 
 ```
 $pdflatex = 'lualatex %O %S';
@@ -331,28 +343,22 @@ $pdflatex = 'lualatex %O %S';
 
 The `$pdflatex` variable specifies which command to run to produce a PDF. The `%O` stands for the compiler **o**ptions passed when invoking `latexmk` (for example, `-file-line-error`) and the `%S` stands for the **s**ource file (for example, `dissertation.tex`).
 
-**Note:** We could instead have changed `$pdf_mode = 1;` to `$pdf_mode = 4;`, but tools like [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) overwrite that option.
+**Note:** We could instead have changed `$pdf_mode = 1;` to `$pdf_mode = 4;` (see the `latexmk` manual for details on these magic numbers), but tools like [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) overwrite that option.
 
-**Note:** Like the `lualatex` executable, the `xelatex` executable also allows for using the fonts installed on your operating system, but it’s more difficult to configure with the `pdfx` package to generate a PDF/A.
-
-To specify which fonts to use, add the following before `\begin{document}` in `dissertation.tex`:
+The following is an example of how to specify different fonts (this must appear before `\begin{document}` in `dissertation.tex`):
 
 ```latex
 \usepackage{fontspec, unicode-math}
-\setmainfont{Charter}
-\setmonofont{Menlo}[Scale = MatchLowercase]
+\setmainfont{PT Serif}
+\setmonofont{PT Mono}
 \setmathfont{Asana Math}
 ```
 
 The [`fontspec` package](https://ctan.org/pkg/fontspec) allows for selecting text fonts, and the [`unicode-math` package](https://ctan.org/pkg/unicode-math) allows for selecting mathematical fonts.
 
-In this example, the main font of the document is set to [Charter](https://practicaltypography.com/charter.html), which is installed by default on macOS. You may select another font by using its name, which you may find in the font selector of other software you use.
+In this example, the main font of the document is set to [PT Serif](http://www.paratype.com/public/), the monospaced font is set to PT Mono, and the mathematical font is set to Asana Math. All of these fonts are included by default in most LaTeX distributions, and PT Serif and PT Mono are included in macOS as well.
 
-In this example, the monospaced font is set to Menlo, which is also installed by default on macOS. Again, you may select another font by using its name. The `Scale` option resizes the font so that it matches the size of the main font.
-
-In this example, the mathematical font is Asana Math, which comes with the `unicode-math` package.
-
-**Note:** If you need to collaborate with other people who may not have the same fonts installed on their computers, then you have two options. First, you may use fonts compatible with the `lualatex` executable that come with most LaTeX distributions; they’re marked with “[OTF or TTF available]” on [The LaTeX Font Catalog](https://tug.org/FontCatalogue/). Second, you may include the font files along with the LaTeX source files for your document. See the documentation for the [`fontspec` package](https://ctan.org/pkg/fontspec) for more details.
+Refer to the manuals of the packages mentioned above for more information, including how to select fonts that you have installed in your operating system.
 
 </details>
 
@@ -365,19 +371,19 @@ As an external program to do syntax highlighting, install [Shiki LaTeX](https://
 
 **Note:** Traditionally the external program used to do syntax highlighting is [Pygments](https://pygments.org), but [Shiki](https://shiki.matsu.io) generally yields better results.
 
-**Disclaimer:** [I](https://www.leafac.com) developed Shiki LaTeX.
+**Disclaimer:** Shiki LaTeX is developed by [the author of this template](https://www.leafac.com).
 
 To configure `latexmk` to allow the LaTeX compiler to call Shiki LaTeX, add the following to `.latexmkrc`:
 
 ```
-$pdflatex = 'pdflatex -shell-escape %O %S';
+$pdflatex = 'lualatex -shell-escape %O %S';
 ```
 
-**Note:** If you’re also using other fonts (see above), then replace `pdflatex` with `lualatex`.
+The `lualatex` executable is used instead of the `pdflatex` executable because otherwise characters such as `` ` `` may not be rendered correctly (see discussion about **Other Fonts** above for more on the `lualatex` executable).
 
 The `-shell-escape` option allows the LaTeX compiler to call external programs.
 
-**Warning:** You must trust the LaTeX source for the document you’re compiling with the `-shell-escape` option, because you’re granting it the privilege to run arbitrary commands on your machine.
+**Warning:** You must trust the LaTeX source for the document that you’re compiling with the `-shell-escape` option, because you’re granting it the privilege to run arbitrary commands on your machine.
 
 To include the `minted` package, add the following before `\begin{document}` in `dissertation.tex`:
 
@@ -450,6 +456,40 @@ Finally, the following is an example of some framed material:
 Yocto-JavaScript is a representation of something called the \emph{$\lambda$-calculus}~\cite[§~6]{understanding-computation}.
 \end{mdframed}
 ```
+
+</details>
+
+<details>
+<summary>A GitHub Action to Build Your Document</summary>
+
+It’s a good idea to build your document on every push in a [GitHub Action](https://github.com/features/actions) to identify problems that occur only on the machine of a particular collaborator. The following is an example configuration:
+
+```yml
+# .github/workflows/main.yml
+
+on: push
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "13.x"
+      - run: |
+          echo 'deb http://azure.archive.ubuntu.com/ubuntu/ eoan main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list
+          sudo apt update
+          sudo apt install --yes texlive-full
+          npm ci
+          latexmk
+        working-directory: dissertation
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Dissertation
+          path: dissertation/yocto-cfa.pdf
+```
+
+We configure a different repository to get the latest version of LaTeX, which is necessary to build a PDF/A document. We also install [Node.js](https://nodejs.org) for the syntax highlighter (see above); if it were not for the syntax highlighter, we may have chosen to use [an existing Action](https://github.com/marketplace/actions/github-action-for-latex), which is simpler to configure and much faster.
 
 </details>
 
