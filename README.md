@@ -482,11 +482,10 @@ jobs:
           sudo apt install --yes texlive-full
           npm ci
           latexmk
-        working-directory: dissertation
       - uses: actions/upload-artifact@v1
         with:
           name: Dissertation
-          path: dissertation/yocto-cfa.pdf
+          path: dissertation.pdf
 ```
 
 We configure a different repository to get the latest version of LaTeX, which is necessary to build a PDF/A document. We also install [Node.js](https://nodejs.org) for the syntax highlighter (see above); if it were not for the syntax highlighter, we may have chosen to use [an existing Action](https://github.com/marketplace/actions/github-action-for-latex), which is simpler to configure and much faster.
