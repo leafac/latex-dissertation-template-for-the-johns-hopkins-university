@@ -390,15 +390,15 @@ To include the `minted` package, add the following before `\begin{document}` in 
 ```latex
 \usepackage{minted}
 \renewcommand{\MintedPygmentize}{node_modules/.bin/shiki-minted}
-\setminted{fontsize = \footnotesize, baselinestretch = 1.2}
-\setmintedinline{fontsize = \normalsize}
+\setminted{fontsize = \footnotesize, baselinestretch = 1.2, breaklines}
+\setmintedinline{fontsize = \normalsize, breaklines = false}
 ```
 
 The `\renewcommand` line tells `minted` to use Shiki LaTeX instead of the default Pygments.
 
-The `\setminted` line tells `minted` to use a smaller font and a smaller space between lines in code listings.
+The `\setminted` line configures the code listings to use a smaller font and a smaller space between lines, and to allow lines that are too long to be wrapped.
 
-The `\setmintedinline` line tells `minted` to use the normal font size in inline code, as opposed to the smaller font size we set above for code listings.
+The `\setmintedinline` line configures the inline code to revert some of the configuration set above that should be specific to code listings. We disable line breaks because otherwise inline code in a mathematical environment (for example, `$\mintinline{js}{x}$`) renders with a mathematical fonts instead of a monospaced font.
 
 Finally, the following is an example of a code listing that is highlighted as [TypeScript](https://www.typescriptlang.org):
 
