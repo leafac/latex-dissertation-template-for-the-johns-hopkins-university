@@ -475,7 +475,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: "13.x"
+          node-version: "14.x"
       - run: |
           echo 'deb http://azure.archive.ubuntu.com/ubuntu/ eoan main restricted universe multiverse' | sudo tee -a /etc/apt/sources.list
           sudo apt update
