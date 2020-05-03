@@ -1,7 +1,7 @@
 <h1 align="center"><a href="https://www.latex-project.org">LaTeX</a> Dissertation Template for the <a href="https://www.jhu.edu">Johns Hopkins University</a></h1>
 <h3 align="center">A LaTeX template that conforms to the <a href="https://www.library.jhu.edu/library-services/electronic-theses-dissertations/formatting-requirements/">Formatting Requirements</a> of the Johns Hopkins University Library</h3>
 <p align="center">
-<a href="https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university"><img alt="Source" src="https://img.shields.io/badge/Source---" /></a>
+<a href="https://github.com/leafac/latex-dissertation-template-for-the-johns-hopkins-university"><img alt="Source" src="https://img.shields.io/badge/Source---"></a>
 </p>
 
 **Warning:** This template is here to help but offers no guarantees. You’re still responsible for ensuring that your dissertation conforms to the requirements.
@@ -42,7 +42,7 @@ Including the [`pdfx` package](https://ctan.org/pkg/pdfx) with the `a-1b` option
 For technical reasons, the `pdfx` package can’t guarantee that the produced PDF complies to the PDF/A standard, so you must validate it yourself. The golden standard for this kind of validation is [Adobe Acrobat Pro DC](https://acrobat.adobe.com/us/en/acrobat/acrobat-pro.html), which includes a tool called **Preflight** capable of detecting problems and fixing them. But Adobe Acrobat Pro DC is paid, so you may prefer to use an [online validator](https://www.pdf-online.com/osa/validate.aspx) instead. Beware that these alternative tools may not be completely accurate.
 
 <p align="center">
-<img alt="PDF/A validation online" src="docs/pdfa-validation.png" width="832" />
+<img alt="PDF/A validation online" src="docs/pdfa-validation.png" width="832">
 </p>
 
 ```latex
@@ -53,15 +53,15 @@ Configuration for the [`hyperref` package](https://ctan.org/pkg/hyperref), which
 
 The `hidelinks` option tells `hyperref` to **not** to decorate links with colored boxes:
 
-| Without `hidelinks`                                                           | With `hidelinks`                                                        |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| <img alt="Without hidelinks" src="docs/hidelinks--without.png" width="793" /> | <img alt="With hidelinks" src="docs/hidelinks--with.png" width="825" /> |
+| Without `hidelinks`                                                         | With `hidelinks`                                                      |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| <img alt="Without hidelinks" src="docs/hidelinks--without.png" width="793"> | <img alt="With hidelinks" src="docs/hidelinks--with.png" width="825"> |
 
 The `bookmarksnumbered` option tells `hyperref` to include the numbers of the sections on the table of contents displayed by PDF viewers:
 
-| Without `bookmarksnumbered`                                                                   | With `bookmarksnumbered`                                                                |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| <img alt="Without bookmarksnumbered" src="docs/bookmarksnumbered--without.png" width="810" /> | <img alt="With bookmarksnumbered" src="docs/bookmarksnumbered--with.png" width="810" /> |
+| Without `bookmarksnumbered`                                                                 | With `bookmarksnumbered`                                                              |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| <img alt="Without bookmarksnumbered" src="docs/bookmarksnumbered--without.png" width="810"> | <img alt="With bookmarksnumbered" src="docs/bookmarksnumbered--with.png" width="810"> |
 
 ```latex
 \usepackage{tocbibind}
@@ -273,7 +273,7 @@ The existing content is just an example of an entry. For more on managing a bibl
 See the discussion about PDF/A in the section on `dissertation.tex` above. You may inspect some of the metadata using, for example, Preview in macOS by going to **Tools > Show Inspector**:
 
 <p align="center">
-<img alt="Metadata in Preview" src="docs/metadata.png" width="366" />
+<img alt="Metadata in Preview" src="docs/metadata.png" width="366">
 </p>
 
 For more information, including other fields that you may configure in this file, refer to the documentation for the [`pdfx` package](https://ctan.org/pkg/pdfx).
@@ -411,7 +411,7 @@ export function evaluate(input: string): string {
 ```
 
 <p align="center">
-<img alt="Syntax higlighting: Listing" src="docs/syntax-highlighting--listing.png" width="473" />
+<img alt="Syntax higlighting: Listing" src="docs/syntax-highlighting--listing.png" width="473">
 </p>
 
 And the following is an example of inline code that is highlighted as JavaScript:
@@ -421,7 +421,7 @@ arrays (for example, \mintinline{js}{["Leandro", 29]}),
 ```
 
 <p align="center">
-<img alt="Syntax higlighting: Inline" src="docs/syntax-highlighting--inline.png" width="391" />
+<img alt="Syntax higlighting: Inline" src="docs/syntax-highlighting--inline.png" width="391">
 </p>
 
 See the documentation for the [`minted` package](https://ctan.org/pkg/minted) for more information.
@@ -434,7 +434,7 @@ See the documentation for the [`minted` package](https://ctan.org/pkg/minted) fo
 Frames are useful to set apart material that demands extra attention, that should be easy to find while skimming, or that is an aside which may be skipped, for example:
 
 <p align="center">
-<img alt="Frame" src="docs/frame.png" width="788" />
+<img alt="Frame" src="docs/frame.png" width="788">
 </p>
 
 To use frames in a document, include the [`mdframed` package](https://ctan.org/pkg/mdframed) by adding the following before `\begin{document}` in `dissertation.tex`:
